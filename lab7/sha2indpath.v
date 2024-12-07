@@ -65,7 +65,7 @@ module sha2indpath(input st_pkt,input clr,input clk,input rst_b,input [63:0]pkt,
 
 wire [63:0]q;
 wire [63:0]helper;
-rgst #(.w(64)) inst0(.d(q+64'h8000000000000000),.clk(clk),.rst_b(rst_b),.ld(~(pad_pkt|zero_pkt|mgln_pkt)&st_pkt),.q(q),.clr(clr));
+	rgst #(.w(64)) inst0(.d(q+64),.clk(clk),.rst_b(rst_b),.ld(~(pad_pkt|zero_pkt|mgln_pkt)&st_pkt),.q(q),.clr(clr));
 pktmux inst1(.pad_pkt(pad_pkt), .zero_pkt(zero_pkt), .mgln_pkt(mgln_pkt),.msg_len(q),.pkt(pkt),.o(helper));
 regfl inst2(.s(idx),.d(helper),.we(st_pkt),.q(blk), .clk(clk), .rst_b(rst_b));
 cntr #(.w(3)) inst3(.c_up(st_pkt), .clr(clr),.clk(clk),.rst_b(rst_b),.q(idx));
