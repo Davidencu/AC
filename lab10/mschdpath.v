@@ -52,7 +52,7 @@ generate
 		end
 		else
 		begin
-			rgst #(.w(32)) inst1(.clr(1'b0), .clk(clk), .rst_b(rst_b), .ld(upd_mreg), .d(mux(blk[511-i*32:512-(i+1)*32],(m0+sigma0(m[1])+m[9]+sigma1(m[14]))%33'h100000000,ld_mreg)), .q(m[i]));
+			rgst #(.w(32)) inst2(.clr(1'b0), .clk(clk), .rst_b(rst_b), .ld(upd_mreg), .d(mux(blk[511-i*32:512-(i+1)*32],(m0+sigma0(m[1])+m[9]+sigma1(m[14]))%33'h100000000,ld_mreg)), .q(m[i]));
 		end
 	end
 endgenerate
